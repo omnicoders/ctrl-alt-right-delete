@@ -1,0 +1,76 @@
+{
+  "name": "Scene1",
+  "question": {
+    "type": "list",
+    "name": "toQuestion",
+    "message": "There is a protest in Oakland regarding issue X with group Y.",
+    "choices": [
+      "Do A",
+      "Do B",
+      "Do C",
+      "Do D"
+    ]
+  },
+  "actions": [
+    {
+      "name": "Do A",
+      "chanceSuccess": 100,
+      "message": "You attempt to Do A",
+      "fail": {
+        "message": "Got ass kicked by group Y.",
+        "health": -20,
+        "power": -20
+      },
+      "succeed": {
+        "message": "Did A to group Y.",
+        "health": 0,
+        "power": 0
+      }
+    },
+    {
+      "name": "Do B",
+      "chanceSuccess": 50,
+      "message": "You attempt to Do B",
+      "fail": {
+        "message": "Got ass kicked by group Y.",
+        "health": -20,
+        "power": -20
+      },
+      "succeed": {
+        "message": "Did B to group Y.",
+        "health": 0,
+        "power": 0
+      }
+    },
+    {
+      "name": "Do C",
+      "chanceSuccess": 30,
+      "message": "You attempt to Do C",
+      "fail": {
+        "message": "Got ass kicked by group Y.",
+        "health": -20,
+        "power": -20
+      },
+      "succeed": {
+        "message": "Did C to group Y.",
+        "health": 0,
+        "power": 0
+      }
+    },
+    {
+      "name": "Do D",
+      "chanceSuccess": 20,
+      "message": "You attempt to Do D",
+      "fail": {
+        "message": "Got ass kicked by group Y.",
+        "health": -20,
+        "power": -20
+      },
+      "succeed": {
+        "message": "Did D to group Y.",
+        "health": 0,
+        "power": 0
+      }
+    }
+  ]  
+}

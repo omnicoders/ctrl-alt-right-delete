@@ -41,14 +41,14 @@ async function startGame(){
 async function introduction(){
   await getCharacterInfo();
   let message = `Hello ` + `${character.name}`.bold.white + `. Welcome to Ctrl-Alt-Right-Delete.\n`;
-  message += 'In this game you play as a fictional member of\n';
-  message += 'the Alt-Right encountering various situations.\n';
+  message += 'In this game you play as a person of\n';
+  message += 'privilege encountering various situations.\n';
   await messageWithPause(message);
   return true;  
 }
 
 async function sceneLoop(){
-  const scenes = require('./scenes.json');
+  const scenes = require('./scenes/scenes.json');
   await newDay();
   let randomSceneIndex = randomNumberBetween(0, (scenes.length - 1));
   let randomScene = scenes[randomSceneIndex];
@@ -63,13 +63,14 @@ async function sceneLoop(){
   }
   if(action){
     console.log(`\n${action.message}`);
-    let actionSucceeded = randomNumberBetween(0,100) >= 80;
+    let actionSucceeded = randomNumberBetween(0,100) <= action.chanceSuccess;
     if(actionSucceeded){
       console.log('YOU SUCCEED'.bold.green);
+      console.log(`${action.succeed.message}`.bold.white);
       console.log('Reward: ' + 'NOTHING'.bold.red);
     } else {    
       console.log('YOU FAIL'.bold.red);
-      console.log(`${action.fail.message}`);
+      console.log(`${action.fail.message}`.bold.white);
       console.log(`${action.fail.health} Health`);
       character.stats.health += action.fail.health;
       console.log(`${action.fail.power} Power`);

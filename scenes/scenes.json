@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Jogger Joe",
+    "question": {
+      "type": "list",
+      "name": "toQuestion",
+      "message": "You encounter a homeless man near Lake Merrit while jogging and accidently knock over a bottle filled with urine. You attempt to speak to the man and he says nothing in response. You: ",
+      "choices": [
+        "Continue On",
+        "Yell At Man",
+        "Throw Man's Things In Lake",
+        "Hit Man"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Continue On",
+        "chanceSuccess": 100,
+        "message": "You realize that kicking over a bottle of urine is far less of an inconvenience than:\n1. Having no place to live\n2. No bathroom or public bathroom access\n3. Having to piss into a plastic bottle\n",
+        "fail": {
+          "message":
+           "Error: Can't fail on 100% chance success.",
+          "health": 0,
+          "power": 0
+        },
+        "succeed": {
+          "message": "You continue on with your day to focus on something else.",
+          "health": 0,
+          "power": 0
+        }
+      },
+      {
+        "name": "Yell At Man",
+        "chanceSuccess": 0,
+        "message": "You start yelling at the man who continues to not respond. You realize quickly that there is no point. He has more going on than you think and is used to being yelled at.",
+        "fail": {
+          "message": "You wasted your energy.",
+          "health": -5,
+          "power": -5
+        },
+        "succeed": {
+          "message": "Error: Can't succeed on 0% chance success.",
+          "health": 0,
+          "power": 0
+        }
+      },
+      {
+        "name": "Throw Man's Things In Lake",
+        "chanceSuccess": 0,
+        "message": "You pull a 'Jogger Joe' and start throwing the man's things in the lake. A local bystander films you doing so, you freak out and grab their phone from them, not understanding the concept of live streaming. The local police arrest you the next day on charges of robbery.",
+        "fail": {
+          "message": "In Santa Rita where the other former homeless inmates have their way with you.",
+          "health": -100,
+          "power": -100
+        },
+        "succeed": {
+          "message": "Error: Can't succeed on 0% chance success.",
+          "health": 0,
+          "power": 0
+        }
+      },
+      {
+        "name": "Hit Man",
+
+        "message": "You approach the unresponsive man and hit him. He quickly becomes responsive and starts kicking your ass.",
+        "fail": {
+          "message": "Got ass kicked by formerly unresponsive man.",
+          "health": -50,
+          "power": -50
+        },
+        "succeed": {
+          "message": "Error: Can't succeed on 0% chance success.",
+          "health": 0,
+          "power": 0
+        }
+      }
+    ]  
+  }
+]
