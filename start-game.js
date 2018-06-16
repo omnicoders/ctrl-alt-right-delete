@@ -29,7 +29,7 @@ async function getCharacterName() {
       type: 'input',
       name: 'characterName',
       message: 'Enter your Character Name:',
-      default: 'Billy'
+      default: 'Milo'
     }
   ];
   console.log('');
