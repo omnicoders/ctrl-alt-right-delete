@@ -61,7 +61,7 @@
       },
       {
         "name": "Hit Man",
-
+        "chanceSuccess": 0,
         "message": "You approach the unresponsive man and hit him. He quickly becomes responsive and starts kicking your ass.",
         "fail": {
           "message": "Got ass kicked by formerly unresponsive man.",
