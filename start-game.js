@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const colors = require('colors'); 
 
 let character = {
   name: ""
@@ -6,19 +7,22 @@ let character = {
 
 startGame()
 .then((result) => {
-  console.log(result);
+  console.log('\nGAME OVER'.bold.white);
+  console.log('YOU FAILED\n'.bold.red);
 });
 
 
 async function startGame(){  
   await introduction();
-  return '\nGAME OVER\nResult: Complete Failure\n';
+  return true;
 }
 
 async function introduction(){
   character.name = await getCharacterName();
-  let message = `Hello ${character.name}. Welcome to Ctrl-Alt-Right-Delete.\n`;
-
+  let message = `Hello ` + `${character.name}`.bold.white + `. Welcome to Ctrl-Alt-Right-Delete.\n`;
+  message += 'In this game you play as a fictional member of\n';
+  message += 'the ' + 'Alt-Right'.bold.red + ' encountering various situations\n';
+  message += 'in which you must avoid being a victim of white genocide.\n';
   await messageWithPause(message);
   return true;  
 }
@@ -58,7 +62,8 @@ async function messageWithPause(message){
   if(continuePlaying){
     return true;
   } else {
-    console.log('ALT-RIGHT-DELETE!!!');
+    console.log('\nGAME OVER'.bold.white);
+    console.log('YOU QUIT\n'.bold.red);
     process.exit();
   }
 }

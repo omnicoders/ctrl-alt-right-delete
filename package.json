@@ -9,6 +9,7 @@
   "author": "",
   "license": "WTFPL",
   "dependencies": {
+    "colors": "^1.3.0",
     "inquirer": "^6.0.0"
   }
 }
