@@ -53,9 +53,36 @@ async function sceneLoop(){
   let randomSceneIndex = randomNumberBetween(0, (scenes.length - 1));
   let randomScene = scenes[randomSceneIndex];
   let answer = await inquirer.prompt(randomScene.question);
-  console.log(`\n${answer.toQuestion}`);
-
-  return true;
+  let actions = randomScene.actions;
+  let action;
+  for(let i = 0; i < actions.length; i++){
+    let thisAction = actions[i];
+    if(thisAction.name === answer.toQuestion){
+      action = thisAction;
+    }
+  }
+  if(action){
+    console.log(`\n${action.message}`);
+    let actionSucceeded = randomNumberBetween(0,100) >= 80;
+    if(actionSucceeded){
+      console.log('YOU SUCCEED'.bold.green);
+      console.log('Reward: ' + 'NOTHING'.bold.red);
+    } else {    
+      console.log('YOU FAIL'.bold.red);
+      console.log(`${action.fail.message}`);
+      console.log(`${action.fail.health} Health`);
+      character.stats.health += action.fail.health;
+      console.log(`${action.fail.power} Power`);
+      character.stats.power += action.fail.power;
+    }  
+  }
+  if(character.stats.health <= 0){
+    await gameOver('You perished from your wounds.');
+  } else if(character.stats.power <= 0){
+    await gameOver('You perished from exhaustion.');
+  } else {
+    await sceneLoop();
+  }
 }
 
 async function newDay(){
