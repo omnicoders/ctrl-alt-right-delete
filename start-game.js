@@ -1,9 +1,18 @@
 const inquirer = require('inquirer');
 const colors = require('colors'); 
 
+/*******************/
+/* Game State      */
+/*******************/
+
 let character = {
   name: ""
 };
+
+
+/*******************/
+/* Process         */
+/*******************/
 
 startGame()
 .then((result) => {
@@ -11,6 +20,10 @@ startGame()
   console.log('YOU FAILED\n'.bold.red);
 });
 
+
+/********************/
+/* Scene Functions  */
+/********************/
 
 async function startGame(){  
   await introduction();
@@ -26,6 +39,12 @@ async function introduction(){
   await messageWithPause(message);
   return true;  
 }
+
+
+
+/***********************/
+/* Character Functions */
+/***********************/
 
 async function getCharacterName() {
   let question = [
