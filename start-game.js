@@ -1,23 +1,29 @@
 const inquirer = require('inquirer');
 
+let character = {
+  name: ""
+};
+
 startGame()
 .then((result) => {
-  //clear();
-
+  console.log(result);
 });
 
 
-async function startGame(){
-  // log('keypress');
-  // await keypress();
-  let characterName = await getCharacterName();
-  let message = `Hello ${characterName}. Welcome to Alt-Right-Delete.`;
-  await messageWithPause(message);  
-  return characterName;
+async function startGame(){  
+  await introduction();
+  return '\nGAME OVER\nResult: Complete Failure\n';
+}
+
+async function introduction(){
+  character.name = await getCharacterName();
+  let message = `Hello ${character.name}. Welcome to Ctrl-Alt-Right-Delete.\n`;
+
+  await messageWithPause(message);
+  return true;  
 }
 
 async function getCharacterName() {
-  clear();
   let question = [
     {
       type: 'input',
@@ -26,14 +32,20 @@ async function getCharacterName() {
       default: 'Billy'
     }
   ];
+  console.log('');
   let answer = await inquirer.prompt(question);
   return answer.characterName;
 };
 
+
+
+/********************/
+/* Helper Functions */
+/********************/
+
 async function messageWithPause(message){
-  clear();
-  log(message);    
-  space();
+  
+  console.log(`\n${message}`);
   let confirmation = [
     {
       type: 'confirm',
@@ -46,28 +58,7 @@ async function messageWithPause(message){
   if(continuePlaying){
     return true;
   } else {
-    clear();
     console.log('ALT-RIGHT-DELETE!!!');
     process.exit();
   }
-}
-
-// async function keypress() {
-//   process.stdin.setRawMode(true);
-//   process.stdin.once('data', () => {
-//     process.stdin.setRawMode(false)
-//     return true;
-//   });
-// };
-
-function clear(){
-  console.clear();
-}
-
-function log(obj){
-  console.log(obj);
-}
-
-function space(){
-  log('\n\n\n');
 }
